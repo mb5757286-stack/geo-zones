@@ -20,14 +20,14 @@ jobs:
       - name: Build rpk
         run: |
           mkdir -p dist
-          (aiot --help; aiot build) > dist/build-log.txt 2>&1 || echo "build exit code: $?" >> dist/build-log.txt
+          (aiot --help; cd src && aiot build; cd ..) > dist/build-log.txt 2>&1; echo "exit code: $?" >> dist/build-log.txt
           cat dist/build-log.txt
-          ls -la . dist >> dist/build-log.txt
           find . -name "*.rpk" -not -path "./.git/*" -exec cp {} dist/ \; || true
       - name: Commit build output
+        if: always()
         run: |
           git config user.name "build-rpk"
           git config user.email "build-rpk@users.noreply.github.com"
           git add -f dist
           git commit -m "build output" || true
-          git push || true
+          git push
