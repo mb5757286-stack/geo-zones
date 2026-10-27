@@ -18,7 +18,7 @@ Commands:
   initEmulatorEnv             init/reset emulator environment
   resign                      resign build folder to dist/rpk
   help [command]              display help for command
-🔷 [10-27 10:32:59] [toolkit]: start build:  {
+🔷 [10-27 10:35:37] [toolkit]: start build:  {
   "projectPath": "/home/runner/work/geo-zones/geo-zones",
   "options": {
     "sourceRoot": "./src",
@@ -40,22 +40,28 @@ Commands:
   "arch": "x64",
   "toolkit": "2.0.5"
 }
-❌ [10-27 10:32:59] [toolkit]: ERROR:  build error , Error: error in /home/runner/work/geo-zones/geo-zones/src/manifest.json: 
-1. icon: "/Common/icon.png" is missing in project
-🟠 [10-27 10:32:59] [toolkit]: please use AIoT-IDE: https://iot.mi.com/vela/quickapp/zh/guide/start/use-ide.html
+❌ [10-27 10:35:37] [toolkit]: ### manifest ### path '/home/runner/work/geo-zones/geo-zones/src/index/index.ux | index.hml' does not exist
+🔷 [10-27 10:35:37] [toolkit]: afterCompile: undefined
+🔷 [10-27 10:35:37] [toolkit]: afterCompile: Create a soft link to the node_modules folder
+🔷 [10-27 10:35:37] [toolkit]: afterCompile: Compile javascript project
+❌ [10-27 10:35:37] [toolkit]: App file does not exist
+❌ [10-27 10:35:37] [toolkit]: webpack error:
+ 1. Compilation failed: please confirm that the file path index/index configured in manifest.json exists
+❌ [10-27 10:35:37] [toolkit]: ERROR:  build error , Error: afterCompile: Compile javascript project error: Error
+🟠 [10-27 10:35:37] [toolkit]: please use AIoT-IDE: https://iot.mi.com/vela/quickapp/zh/guide/start/use-ide.html
 .:
 total 32
-drwxr-xr-x 6 runner runner 4096 Oct 27 10:32 .
-drwxr-xr-x 3 runner runner 4096 Oct 27 10:32 ..
-drwxr-xr-x 7 runner runner 4096 Oct 27 10:32 .git
-drwxr-xr-x 3 runner runner 4096 Oct 27 10:32 .github
--rw-r--r-- 1 runner runner  732 Oct 27 10:32 README.md
-drwxr-xr-x 2 runner runner 4096 Oct 27 10:32 dist
-drwxr-xr-x 3 runner runner 4096 Oct 27 10:32 src
--rw-r--r-- 1 runner runner 2542 Oct 27 10:32 zone-editor.html
+drwxr-xr-x 6 runner runner 4096 Oct 27 10:35 .
+drwxr-xr-x 3 runner runner 4096 Oct 27 10:35 ..
+drwxr-xr-x 7 runner runner 4096 Oct 27 10:35 .git
+drwxr-xr-x 3 runner runner 4096 Oct 27 10:35 .github
+-rw-r--r-- 1 runner runner  732 Oct 27 10:35 README.md
+drwxr-xr-x 2 runner runner 4096 Oct 27 10:35 dist
+drwxr-xr-x 4 runner runner 4096 Oct 27 10:35 src
+-rw-r--r-- 1 runner runner 2542 Oct 27 10:35 zone-editor.html
 
 dist:
 total 12
-drwxr-xr-x 2 runner runner 4096 Oct 27 10:32 .
-drwxr-xr-x 6 runner runner 4096 Oct 27 10:32 ..
--rw-r--r-- 1 runner runner 1731 Oct 27 10:32 build-log.txt
+drwxr-xr-x 2 runner runner 4096 Oct 27 10:35 .
+drwxr-xr-x 6 runner runner 4096 Oct 27 10:35 ..
+-rw-r--r-- 1 runner runner 2240 Oct 27 10:35 build-log.txt
