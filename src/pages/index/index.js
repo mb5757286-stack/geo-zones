@@ -7,8 +7,8 @@ function haversine(a, b) {
   const toRad = d => d * Math.PI / 180
   const dLat = toRad(b.lat - a.lat)
   const dLng = toRad(b.lng - a.lng)
-  const h = Math.sin(dLat / 2) ** 2 +
-            Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2
+  const h = Math.pow(Math.sin(dLat / 2), 2) +
+            Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.pow(Math.sin(dLng / 2), 2)
   return 2 * R * Math.asin(Math.sqrt(h))
 }
 
@@ -41,31 +41,41 @@ export default {
     attempts: 0
   },
   onInit() {
-    geolocation.subscribe({
-      success: (ret) => {
-        this.attempts++
-        const p = { lat: ret.latitude, lng: ret.longitude }
-        this.detail = `${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}`
-        const zone = findZone(p)
-        if (zone) {
-          if (!this.alert) vibrator.vibrate({ mode: 'long' })
-          this.alert = true
-          this.zoneName = zone.name
-          this.status = 'ВНИМАНИЕ: ЗОНА'
-        } else {
-          this.alert = false
-          this.zoneName = ''
-          this.status = 'Безопасно'
+    try {
+      geolocation.subscribe({
+        success: (ret) => {
+          try {
+            this.attempts++
+            const p = { lat: ret.latitude, lng: ret.longitude }
+            this.detail = p.lat.toFixed(5) + ', ' + p.lng.toFixed(5)
+            const zone = findZone(p)
+            if (zone) {
+              if (!this.alert) {
+                try { vibrator.vibrate({ mode: 'long' }) } catch (e) {}
+              }
+              this.alert = true
+              this.zoneName = zone.name
+              this.status = 'ВНИМАНИЕ: ЗОНА'
+            } else {
+              this.alert = false
+              this.zoneName = ''
+              this.status = 'Безопасно'
+            }
+          } catch (e) {
+            this.detail = 'ошибка: ' + e
+          }
+        },
+        fail: (data, code) => {
+          this.status = 'Нет GPS'
+          this.detail = 'ошибка ' + code + ': ' + data
         }
-      },
-      fail: (data, code) => {
-        this.attempts++
-        this.status = 'Нет GPS'
-        this.detail = `ошибка ${code}: ${data}`
-      }
-    })
+      })
+    } catch (e) {
+      this.status = 'GPS недоступен'
+      this.detail = '' + e
+    }
   },
   onDestroy() {
-    geolocation.unsubscribe()
+    try { geolocation.unsubscribe() } catch (e) {}
   }
 }
