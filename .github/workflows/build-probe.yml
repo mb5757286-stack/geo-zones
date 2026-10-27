@@ -1,0 +1,18 @@
+name: build-probe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Find the AIoT toolkit npm package
+        run: |
+          for p in create-aiot aiot-toolkit aiot @aiot-toolkit/cli @aiot/cli @xiaomi-iot/aiot; do
+            echo "== $p"
+            npm view "$p" name version description 2>&1 | head -4 || true
+          done
