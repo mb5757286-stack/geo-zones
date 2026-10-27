@@ -20,7 +20,7 @@ jobs:
       - name: Build rpk
         run: |
           mkdir -p dist
-          (aiot --help; cd src && aiot build; cd ..) > dist/build-log.txt 2>&1; echo "exit code: $?" >> dist/build-log.txt
+          (aiot --help; aiot build) > dist/build-log.txt 2>&1; echo "exit code: $?" >> dist/build-log.txt
           cat dist/build-log.txt
           find . -name "*.rpk" -not -path "./.git/*" -exec cp {} dist/ \; || true
       - name: Commit build output
