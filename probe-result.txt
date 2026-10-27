@@ -1,0 +1,42 @@
+== create-aiot
+name = 'create-aiot'
+version = '2.0.5'
+description = 'An easy way to start aiot project'
+== aiot-toolkit
+name = 'aiot-toolkit'
+version = '2.0.5'
+description = 'Tools for creating, developing, and packaging aiot applications.'
+== aiot
+name = 'aiot'
+version = '0.0.3'
+description = 'This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.'
+== @aiot-toolkit/cli
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@aiot-toolkit%2fcli - Not found
+npm error 404
+npm error 404  '@aiot-toolkit/cli@*' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-27T10_25_37_424Z-debug-0.log
+(not found)
+== @aiot/cli
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@aiot%2fcli - Not found
+npm error 404
+npm error 404  '@aiot/cli@*' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-27T10_25_37_802Z-debug-0.log
+(not found)
+== @xiaomi-iot/aiot
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@xiaomi-iot%2faiot - Not found
+npm error 404
+npm error 404  '@xiaomi-iot/aiot@*' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-27T10_25_38_189Z-debug-0.log
+(not found)
