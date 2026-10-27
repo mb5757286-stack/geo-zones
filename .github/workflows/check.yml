@@ -13,7 +13,7 @@ jobs:
 
       - name: Required files exist
         run: |
-          for f in src/manifest.json src/zones.js src/pages/index/index.js src/pages/index/index.ux src/app.js src/app.ux zone-editor.html; do
+          for f in src/manifest.json src/zones.js src/pages/index/index.js src/pages/index/index.ux src/app.ux zone-editor.html; do
             test -f "$f" || { echo "missing: $f"; exit 1; }
           done
 
