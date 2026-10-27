@@ -1,8 +1,10 @@
 name: build-rpk
 
 on:
-  workflow_dispatch:
   push:
+    branches: [main]
+    paths: ['src/**', 'package.json', '.github/workflows/build.yml']
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,14 +17,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install AIoT toolkit
-        run: npm install -g aiot-toolkit@2.0.5 2>&1 | tail -20
+      - name: Install
+        run: npm install
       - name: Build rpk
         run: |
           mkdir -p dist
-          (aiot --help; aiot build) > dist/build-log.txt 2>&1; echo "exit code: $?" >> dist/build-log.txt
+          npx aiot build > dist/build-log.txt 2>&1; echo "exit code: $?" >> dist/build-log.txt
           cat dist/build-log.txt
-          find . -name "*.rpk" -not -path "./.git/*" -exec cp {} dist/ \; || true
+          find . -name '*.rpk' -not -path './node_modules/*' -exec cp {} dist/ \;
+          ls dist/*.rpk
       - name: Commit build output
         if: always()
         run: |
