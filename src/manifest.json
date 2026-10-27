@@ -6,17 +6,23 @@
   "versionCode": 1,
   "minAPILevel": 1,
   "features": [
-    { "name": "system.geolocation" },
-    { "name": "system.vibrator" }
+    {
+      "name": "system.geolocation"
+    },
+    {
+      "name": "system.vibrator"
+    }
   ],
   "permissions": [
-    { "name": "hapjs.permission.LOCATION" }
+    {
+      "name": "hapjs.permission.LOCATION"
+    }
   ],
   "config": {},
   "router": {
-    "entry": "index",
+    "entry": "pages/index",
     "pages": {
-      "index": {
+      "pages/index": {
         "component": "index",
         "path": "/"
       }
