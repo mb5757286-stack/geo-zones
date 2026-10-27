@@ -18,8 +18,8 @@ Commands:
   initEmulatorEnv             init/reset emulator environment
   resign                      resign build folder to dist/rpk
   help [command]              display help for command
-🔷 [10-27 10:35:37] [toolkit]: start build:  {
-  "projectPath": "/home/runner/work/geo-zones/geo-zones",
+🔷 [10-27 10:41:42] [toolkit]: start build:  {
+  "projectPath": "/home/runner/work/geo-zones/geo-zones/src",
   "options": {
     "sourceRoot": "./src",
     "signRoot": "./sign",
@@ -40,28 +40,6 @@ Commands:
   "arch": "x64",
   "toolkit": "2.0.5"
 }
-❌ [10-27 10:35:37] [toolkit]: ### manifest ### path '/home/runner/work/geo-zones/geo-zones/src/index/index.ux | index.hml' does not exist
-🔷 [10-27 10:35:37] [toolkit]: afterCompile: undefined
-🔷 [10-27 10:35:37] [toolkit]: afterCompile: Create a soft link to the node_modules folder
-🔷 [10-27 10:35:37] [toolkit]: afterCompile: Compile javascript project
-❌ [10-27 10:35:37] [toolkit]: App file does not exist
-❌ [10-27 10:35:37] [toolkit]: webpack error:
- 1. Compilation failed: please confirm that the file path index/index configured in manifest.json exists
-❌ [10-27 10:35:37] [toolkit]: ERROR:  build error , Error: afterCompile: Compile javascript project error: Error
-🟠 [10-27 10:35:37] [toolkit]: please use AIoT-IDE: https://iot.mi.com/vela/quickapp/zh/guide/start/use-ide.html
-.:
-total 32
-drwxr-xr-x 6 runner runner 4096 Oct 27 10:35 .
-drwxr-xr-x 3 runner runner 4096 Oct 27 10:35 ..
-drwxr-xr-x 7 runner runner 4096 Oct 27 10:35 .git
-drwxr-xr-x 3 runner runner 4096 Oct 27 10:35 .github
--rw-r--r-- 1 runner runner  732 Oct 27 10:35 README.md
-drwxr-xr-x 2 runner runner 4096 Oct 27 10:35 dist
-drwxr-xr-x 4 runner runner 4096 Oct 27 10:35 src
--rw-r--r-- 1 runner runner 2542 Oct 27 10:35 zone-editor.html
-
-dist:
-total 12
-drwxr-xr-x 2 runner runner 4096 Oct 27 10:35 .
-drwxr-xr-x 6 runner runner 4096 Oct 27 10:35 ..
--rw-r--r-- 1 runner runner 2240 Oct 27 10:35 build-log.txt
+❌ [10-27 10:41:42] [toolkit]: ERROR:  build error , Error: no such file: '/home/runner/work/geo-zones/geo-zones/src/src/manifest.json'
+🟠 [10-27 10:41:42] [toolkit]: please use AIoT-IDE: https://iot.mi.com/vela/quickapp/zh/guide/start/use-ide.html
+exit code: 0
