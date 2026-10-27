@@ -1,0 +1,14 @@
+{
+  "package": "com.example.geofence",
+  "name": "Geofence",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "minPlatformVersion": 1000,
+  "icon": "/common/icon.png",
+  "features": [
+    { "name": "system.geolocation" },
+    { "name": "system.vibrator" }
+  ],
+  "config": { "logLevel": "off" },
+  "router": { "entry": "pages/index" }
+}

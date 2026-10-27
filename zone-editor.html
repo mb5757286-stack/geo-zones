@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Редактор зон</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  html,body,#map{height:100%;margin:0}
+  #panel{position:absolute;z-index:999;top:10px;left:10px;background:#fff;padding:8px;border-radius:8px;font:14px sans-serif}
+  button{margin:2px}
+  textarea{width:340px;height:160px;font-size:12px}
+</style></head>
+<body>
+<div id="panel">
+  <button id="modePoly">Полигон</button>
+  <button id="modeCircle">Круг</button>
+  <button id="done">Готово</button>
+  <button id="clear">Сброс</button><br>
+  <input id="zname" placeholder="Название зоны" value="Зона"><br>
+  <textarea id="out" readonly></textarea>
+</div>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map').setView([55.7558, 37.6173], 14)
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {attribution:'© OpenStreetMap'}).addTo(map)
+
+let zones = []
+let mode = 'polygon', pts = [], layer = null
+
+function draw() {
+  if (layer) map.removeLayer(layer)
+  if (mode === 'polygon' && pts.length) {
+    layer = L.polygon(pts.map(p => [p.lat, p.lng]), {color:'red'}).addTo(map)
+  }
+  if (mode === 'circle' && pts.length === 2) {
+    layer = L.circle([pts[0].lat, pts[0].lng],
+      {radius: map.distance([pts[0].lat,pts[0].lng],[pts[1].lat,pts[1].lng]), color:'red'}).addTo(map)
+  }
+}
+map.on('click', e => {
+  const p = {lat: e.latlng.lat, lng: e.latlng.lng}
+  if (mode === 'polygon') pts.push(p)
+  else { if (pts.length >= 2) pts = []; pts.push(p) }
+  draw()
+})
+document.getElementById('modePoly').onclick = () => { mode='polygon'; pts=[]; draw() }
+document.getElementById('modeCircle').onclick = () => { mode='circle'; pts=[]; draw() }
+document.getElementById('clear').onclick = () => { pts=[]; draw() }
+document.getElementById('done').onclick = () => {
+  const name = document.getElementById('zname').value || 'Зона'
+  if (mode === 'polygon' && pts.length >= 3) {
+    zones.push({name, type:'polygon', points: pts})
+  } else if (mode === 'circle' && pts.length === 2) {
+    zones.push({name, type:'circle', center: pts[0],
+      radius: Math.round(map.distance([pts[0].lat,pts[0].lng],[pts[1].lat,pts[1].lng]))})
+  }
+  pts = []; draw()
+  document.getElementById('out').value =
+    'export default ' + JSON.stringify(zones, null, 2) + '\n'
+}
+</script></body></html>
