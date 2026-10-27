@@ -1,0 +1,63 @@
+Usage: aiot-toolkit [options] [command]
+
+contains build, dev, release, etc. commands for aiot toolkit
+
+Options:
+  -v, --version               output the version number
+  -h, --help                  display help for command
+
+Commands:
+  build [options]             build project
+  release [options]           release the project
+  start [options]             start project
+  getConnectedDevices         get all connected devices
+  getPlatforms [options]      get available platform(s) on selected device
+  installDbgAndMkp [options]  install "org.hapjs.debugger" & "org.hapjs.mockup"
+  createVVD                   create a vela virtual device
+  deleteVVD [options]         delete vela virtual device(s)
+  initEmulatorEnv             init/reset emulator environment
+  resign                      resign build folder to dist/rpk
+  help [command]              display help for command
+🔷 [10-27 10:27:38] [toolkit]: start build:  {
+  "projectPath": "/home/runner/work/geo-zones/geo-zones",
+  "options": {
+    "sourceRoot": "./src",
+    "signRoot": "./sign",
+    "releasePath": "./dist",
+    "outputPath": "./build",
+    "enableJsc": false,
+    "enableProtobuf": false,
+    "enableE2e": false,
+    "enableStats": false,
+    "optimizeCssAttr": false,
+    "completeFeature": false,
+    "dropConsole": false,
+    "mode": "development"
+  },
+  "watch": false,
+  "node": "v20.20.2",
+  "platform": "linux",
+  "arch": "x64",
+  "toolkit": "2.0.5"
+}
+❌ [10-27 10:27:38] [toolkit]: ERROR:  build error , Error: no such file: '/home/runner/work/geo-zones/geo-zones/src/manifest.json'
+🟠 [10-27 10:27:38] [toolkit]: please use AIoT-IDE: https://iot.mi.com/vela/quickapp/zh/guide/start/use-ide.html
+.:
+total 44
+drwxr-xr-x 6 runner runner 4096 Oct 27 10:27 .
+drwxr-xr-x 3 runner runner 4096 Oct 27 10:27 ..
+drwxr-xr-x 7 runner runner 4096 Oct 27 10:27 .git
+drwxr-xr-x 3 runner runner 4096 Oct 27 10:27 .github
+-rw-r--r-- 1 runner runner  732 Oct 27 10:27 README.md
+drwxr-xr-x 2 runner runner 4096 Oct 27 10:27 dist
+-rw-r--r-- 1 runner runner  336 Oct 27 10:27 manifest.json
+drwxr-xr-x 3 runner runner 4096 Oct 27 10:27 pages
+-rw-r--r-- 1 runner runner 1727 Oct 27 10:27 probe-result.txt
+-rw-r--r-- 1 runner runner 2542 Oct 27 10:27 zone-editor.html
+-rw-r--r-- 1 runner runner  427 Oct 27 10:27 zones.js
+
+dist:
+total 12
+drwxr-xr-x 2 runner runner 4096 Oct 27 10:27 .
+drwxr-xr-x 6 runner runner 4096 Oct 27 10:27 ..
+-rw-r--r-- 1 runner runner 1685 Oct 27 10:27 build-log.txt
