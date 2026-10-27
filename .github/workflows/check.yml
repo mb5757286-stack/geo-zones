@@ -1,0 +1,33 @@
+name: check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required files exist
+        run: |
+          for f in manifest.json zones.js pages/index/index.js pages/index/index.ux zone-editor.html; do
+            test -f "$f" || { echo "missing: $f"; exit 1; }
+          done
+
+      - name: manifest.json is valid JSON
+        run: python3 -m json.tool manifest.json > /dev/null
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: JS syntax (ESM copies)
+        run: |
+          mkdir -p "$RUNNER_TEMP/esm"
+          cp zones.js "$RUNNER_TEMP/esm/zones.mjs"
+          cp pages/index/index.js "$RUNNER_TEMP/esm/index.mjs"
+          node --check "$RUNNER_TEMP/esm/zones.mjs"
+          node --check "$RUNNER_TEMP/esm/index.mjs"
